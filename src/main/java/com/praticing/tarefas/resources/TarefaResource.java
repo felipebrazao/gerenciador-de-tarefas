@@ -3,6 +3,7 @@ package com.praticing.tarefas.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,9 +39,13 @@ public class TarefaResource {
     }
 
     @PostMapping
-    public ResponseEntity<Tarefa> insert(@RequestBody Tarefa tarefa) {
-        Tarefa novaTarefa = service.insert(tarefa);
-        return ResponseEntity.ok(novaTarefa);
+    public ResponseEntity<?> insert(@RequestBody Tarefa tarefa) {
+        try {
+            Tarefa novaTarefa = service.insert(tarefa);
+            return ResponseEntity.ok(novaTarefa);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")

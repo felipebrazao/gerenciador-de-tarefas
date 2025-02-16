@@ -23,8 +23,8 @@ public class Tarefa implements Serializable {
 	private LocalDate dataVencimento;
 	private String status;
 	
-	@ManyToOne
-	@JoinColumn(name = "usuario_id")
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "usuario_id", nullable = false)
 	private Usuario usuario;
 	
 	public Tarefa(){
@@ -81,6 +81,10 @@ public class Tarefa implements Serializable {
 
 	public Usuario getUsuario() {
 		return usuario;
+	}
+	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

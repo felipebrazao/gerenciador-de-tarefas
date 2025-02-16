@@ -9,7 +9,9 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.praticing.tarefas.entities.Tarefa;
+import com.praticing.tarefas.entities.Usuario;
 import com.praticing.tarefas.repositories.TarefaRepository;
+import com.praticing.tarefas.repositories.UsuarioRepository;
 import com.praticing.tarefas.services.exception.DatabaseException;
 import com.praticing.tarefas.services.exception.ResourceNotFoundException;
 
@@ -21,6 +23,9 @@ public class TarefaService {
 
     @Autowired
     private TarefaRepository repository;
+    
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
    
     public List<Tarefa> findAll() {
@@ -34,8 +39,21 @@ public class TarefaService {
     }
 
    
-    public Tarefa insert(Tarefa obj) {
-        return repository.save(obj);
+    public Tarefa insert(Tarefa tarefa) {
+      
+        if (tarefa.getUsuario() == null || tarefa.getUsuario().getId() == null) {
+            throw new RuntimeException("Usuário é obrigatório para criar uma tarefa");
+        }
+
+       
+        Usuario usuario = usuarioRepository.findById(tarefa.getUsuario().getId())
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+      
+       tarefa.setUsuario(usuario);
+
+   
+        return repository.save(tarefa);
     }
 
    
