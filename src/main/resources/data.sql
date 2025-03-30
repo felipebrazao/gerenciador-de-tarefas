@@ -1,0 +1,1 @@
+INSERT INTO usuarios (nome, senha, role) VALUES ('admin', '{noop}password', 'ROLE_ADMIN');
