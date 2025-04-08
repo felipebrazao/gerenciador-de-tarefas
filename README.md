@@ -7,14 +7,14 @@ Conta com **testes unitários** para garantir a estabilidade do código e uma ar
 
 ## 🚀 Funcionalidades
 
-- 📌 **Cadastro de usuários com roles (ADMIN, USER)**
-- 🔐 **Autenticação com JWT**
-- 🛡️ **Autorização baseada em papéis**
-- ✅ **CRUD de tarefas**
-- 📅 **Marcar tarefas como concluídas**
-- 📋 **Listar tarefas por usuário**
-- 🧪 **Testes unitários com JUnit e Mockito**
-- 🧰 **Documentação da API com Swagger**
+- 📌 Cadastro de usuários com roles (`ADMIN`, `USER`)
+- 🔐 Autenticação com JWT
+- 🛡️ Autorização baseada em papéis
+- ✅ CRUD de tarefas
+- 📅 Marcar tarefas como concluídas
+- 📋 Listar tarefas por usuário
+- 🧪 Testes unitários com JUnit e Mockito
+- 🧰 Documentação da API com Swagger
 
 ---
 
@@ -30,7 +30,7 @@ A segurança é implementada com:
 
 ---
 
-## 💡 Exemplo de Roles
+## 💡 Exemplo de Login com Role
 
 ```json
 {
@@ -38,16 +38,19 @@ A segurança é implementada com:
   "password": "123456",
   "role": "ROLE_USER"
 }
+```
+
 Tokens JWT devem ser incluídos no header das requisições:
 
-makefile
-Copiar
-Editar
+```
 Authorization: Bearer <token>
-📁 Estrutura do Projeto
-bash
-Copiar
-Editar
+```
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
 src/
 ├── config/          # Configuração do Spring Security e JWT
 ├── controller/      # Endpoints REST (Auth, Tarefa)
@@ -58,78 +61,90 @@ src/
 ├── security/        # JWT provider, filtros e configs
 ├── service/         # Lógica de negócio
 └── tests/           # Testes unitários
-🧪 Testes
+```
+
+---
+
+## 🧪 Testes
+
 Os testes foram escritos com JUnit 5 e Mockito, abrangendo:
 
-✅ Services
+- ✅ Services
+- ✅ Regras de negócio
+- ✅ Integração básica com segurança
 
-✅ Regras de negócio
+### ▶️ Executar testes
 
-✅ Integração básica com Security
-
-Para rodar os testes:
-
-bash
-Copiar
-Editar
+```bash
 ./mvnw test
-🛠️ Tecnologias Utilizadas
-Java 17
+```
 
-Spring Boot
+---
 
-Spring Security
+## 🛠️ Tecnologias Utilizadas
 
-Spring Data JPA
+- Java 17
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- JWT (jjwt)
+- H2 Database
+- Lombok
+- Swagger (OpenAPI)
+- Maven
+- JUnit 5 + Mockito
 
-JWT (jjwt)
+---
 
-H2 Database
+## ▶️ Como Executar o Projeto
 
-Lombok
+### Pré-requisitos
 
-Swagger (OpenAPI)
+- Java 17+
+- Maven
 
-Maven
+### Passos
 
-JUnit 5 + Mockito
-
-▶️ Como Executar o Projeto
-Pré-requisitos
-Java 17+
-
-Maven
-
-Passos
-bash
-Copiar
-Editar
+```bash
 git clone https://github.com/seuusuario/gerenciador-de-tarefas.git
 cd gerenciador-de-tarefas
 ./mvnw spring-boot:run
-Acesse a API em http://localhost:8080.
+```
 
-🛢️ Console do Banco H2
+Acesse a API em:  
+📍 `http://localhost:8080`
+
+---
+
+## 🔎 Documentação com Swagger
+
+Acesse a documentação da API:
+
+📄 `http://localhost:8080/swagger-ui/index.html`
+
+---
+
+## 🛢️ Console do Banco H2
+
 Para fins de teste, o projeto utiliza banco em memória:
 
-🌐 URL: http://localhost:8080/h2-console
+- 🌐 URL: `http://localhost:8080/h2-console`
+- JDBC: `jdbc:h2:mem:testdb`
+- Usuário: `sa`
+- Senha: _(em branco)_
 
-JDBC: jdbc:h2:mem:testdb
+---
 
-Usuário: sa
+## 📌 Possíveis Melhorias Futuras
 
-Senha: (em branco)
+- 🔄 Refresh token para reautenticação
+- 🌍 Internacionalização (i18n)
+- 🧑‍🤝‍🧑 Relacionamento entre usuários (tarefas compartilhadas)
+- ☁️ Deploy em nuvem (Heroku, Vercel, etc.)
+- 📧 Notificações por e-mail
 
-📌 Possíveis Melhorias Futuras
-🔄 Refresh token para reautenticação
+---
 
-🌍 Internacionalização (i18n)
+## 👨‍💻 Autor
 
-🧑‍🤝‍🧑 Relacionamento entre usuários (tarefas compartilhadas)
-
-☁️ Deploy em nuvem (Heroku, Vercel, etc.)
-
-📧 Notificações por e-mail
-
-👨‍💻 Autor
-Desenvolvido por Felipe Brazão
+Desenvolvido por **Felipe Brazão**  
