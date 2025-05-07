@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+src/main/java/com/praticing/tarefas/builder/UsuarioBuilder.java
+src/main/resources/data.sql
+src/main/resources/schema.sql
