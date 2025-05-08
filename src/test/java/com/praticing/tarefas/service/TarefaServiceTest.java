@@ -68,19 +68,19 @@ public class TarefaServiceTest {
         tarefa.setDescricao("Descrição da tarefa 1");
         tarefa.setUsuario(usuario);
 
-        // Simula o retorno do usuário ao buscar pelo ID no banco
+       
         when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
         when(tarefaRepository.save(any(Tarefa.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        // Chama o método testado
+        
         Tarefa tarefaSalva = tarefaService.insert(tarefa);
 
-        // Verificações
+        
         assertNotNull(tarefaSalva);
         assertEquals("Tarefa 1", tarefaSalva.getTitulo());
         assertEquals(usuario, tarefaSalva.getUsuario());
 
-        // Verifica se os métodos foram chamados corretamente
+       
         verify(usuarioRepository).findById(1L);
         verify(tarefaRepository).save(tarefa);
     }
