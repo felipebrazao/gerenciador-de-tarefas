@@ -1,6 +1,6 @@
 package com.praticing.tarefas.records;
 
 
-public record RegisterDTO(String email, String nome, String senha) {
+public record RegisterDTO(String login, String name, String password) {
 
 }
